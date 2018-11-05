@@ -7,3 +7,18 @@ Dark green: #28b485
 
 */
 
+* {
+   margin: 0;
+   padding: 0;
+   /* the borders and paddings are no longer added to box's total width and height */
+   box-sizing: border-box;
+}
+
+body {
+   font-family: "Lato", sans-serif;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 1.7;
+   color: #777;
+   padding: 30px;
+}
