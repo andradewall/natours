@@ -1,0 +1,196 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black: #000;
+
+*,
+*::after,
+*::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+
+html {
+   font-size: 62.5%;
+}
+
+body {
+   font-family: "Lato", sans-serif;
+   font-weight: 400;
+   font-size: 1.6rem;
+   line-height: 1.7;
+   color: $color-grey-dark;
+   padding: 3rem;
+   /* the borders and paddings are no longer added to box's total width and height */
+   box-sizing: border-box;
+}
+
+.header {
+   /* vh = % of the viewport height */
+   height: 95vh;
+   /* two background images, first the gradiant, starting from left top to right bottom */
+   background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)),
+      url('../img/hero.jpg');
+   background-size: cover;
+   background-position: top;
+   position: relative;
+   /* cuts the element transforming in polygon */
+   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+   &__logo-box {
+      position: absolute;
+      top: 4rem;
+      left: 4rem;
+   }
+
+   &__logo {
+      height: 3.5rem;
+   }
+
+   &__text-box {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      /* moves the box to the specified position */
+      transform: translate(-50%, -50%);
+      text-align: center;
+   }
+}
+
+.heading-primary {
+   color: $color-white;
+   text-transform: uppercase;
+   /* Determines the 'back' side of the element doesnt be visible to the viewer */
+   backface-visibility: hidden;
+   margin-bottom: 6rem;
+
+   &--main {
+      display: block;
+      font-size: 6rem;
+      font-weight: 400;
+      letter-spacing: 3.5rem;
+
+      animation: moveInLeft 1s ease-out;
+   }
+
+   &--sub {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1.75rem;
+
+      animation: moveInRight 1s ease-out;
+   }
+}
+
+@keyframes moveInLeft {
+   /* Animation start */
+   0% {
+      opacity: 0;
+      transform: translateX(-10rem);
+   }
+
+   80% {
+      transform: translateX(1rem);
+   }
+
+   /* Animation finish */
+   100% {
+      opacity: 1;
+      transform: translate(0);
+   }
+}
+
+@keyframes moveInRight {
+   0% {
+      opacity: 0;
+      transform: translateX(10rem);
+   }
+
+   80% {
+      transform: translateX(-1rem);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translate(0);
+   }
+}
+
+@keyframes moveInBottom {
+   0% {
+      opacity: 0;
+      transform: translateY(3rem);
+   }
+
+   100% {
+      opacity: 1;
+      transform: translate(0);
+   }
+}
+
+.btn {
+   &:link,
+   &:visited {
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      display: inline-block;
+      border-radius: 10rem;
+      /* Transition between the states */
+      transition: all .2s;
+      position: relative;
+      font-size: 1.6rem;
+   }
+
+   &:hover {
+      transform: translateY(-.3rem);
+      box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+      &::after {
+         /* Double the size */
+         transform: scaleX(1.4) scaleY(1.6);
+         opacity: 0;
+      }
+   }
+
+   &:active {
+      transform: translateY(-.1rem);
+      box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+   }
+
+   &--white {
+      background-color: $color-white;
+      color: $color-grey-dark;
+
+      &::after {
+         background-color: $color-white;
+      }
+   }
+
+   &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: all .4s;
+   }
+
+   &--animated {
+      animation: moveInBottom .5s ease-out .75s;
+      /* Apply the styles (animation) of 0% before animation start */
+      animation-fill-mode: backwards;
+   }
+}
