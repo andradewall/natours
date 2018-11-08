@@ -11,8 +11,6 @@
 
    // Select all elements that attr starts with col-
    [class^="col-"] {
-      padding: 5px;
-      background-color: aquamarine;
       float: left;
 
       &:not(:last-child) {

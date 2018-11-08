@@ -11,6 +11,7 @@
    background-position: top;
    position: relative;
    /* cuts the element transforming in polygon */
+   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
    &__logo-box {
