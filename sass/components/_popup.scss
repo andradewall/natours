@@ -25,8 +25,12 @@
    }
 
    &__left {
-      width: 33.333333%;
+      width: 33.3333333%;
       display: table-cell;
+
+      @include respond(tab-land) {
+         display: none;
+      }
    }
 
    &__right {
@@ -34,6 +38,11 @@
       display: table-cell;
       vertical-align: middle;
       padding: 3rem 5rem;
+
+      @include respond(tab-land) {
+         width: 100%;
+         display: block;
+      }
    }
 
    &__img {
