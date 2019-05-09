@@ -1,6 +1,6 @@
 .header {
    /* vh = % of the viewport height */
-   height: 95vh;
+   height: 85vh;
    /* two background images, first the gradiant, starting from left top to right bottom */
    background-image: linear-gradient(
       to right bottom,
@@ -10,12 +10,17 @@
    background-size: cover;
    background-position: top;
    position: relative;
-   /* cuts the element transforming in polygon */
-   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+   // random values just to test if the browser supports
+   @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      /* cuts the element transforming in polygon */
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+   }
 
    // 192dpi = 2x screen
-   @media (min-resolution: 192dpi ) and (min-width: 37.5em), 
+   @media (min-resolution: 192dpi) and (min-width: 37.5em), 
+   (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), // to run in safari
    (min-width: 125em) {
       background-image: linear-gradient(
          to right bottom,
